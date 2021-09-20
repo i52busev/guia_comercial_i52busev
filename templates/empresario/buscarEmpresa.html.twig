@@ -1,0 +1,92 @@
+{% extends 'empresario/index.html.twig' %}
+
+{% block title %}{{parent()}} - Buscar Empresa{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<div class="panel panel-default">
+    <div class="panel-heading"  style="background-color:DarkSlateBlue; border:DarkSlateBlue;">
+        <div class="container h-100 " style="margin-top:40px">
+        <h1 style="color:white"><center>Mis Empresas<center></h1>
+        <body onload="buscar();">
+        <div class="form-row">
+            <div id="campo_nombre_empresa" class="form-group col-md-6" style="color:white">
+                <label>Nombre </label>
+                <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre de la empresa a buscar" >
+            </div>
+            <div id="campo_direccion_empresa" class="form-group col-md-6" style="color:white">
+                <label>Dirección </label>
+                <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" placeholder="Dirección de la empresa a buscar" >
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_localidad_empresa" class="form-group col-md-6" style="color:white">
+                <label>Localidad </label>
+                <input type="text" class="form-control" id="localidad_empresa" name="localidad_empresa" placeholder="Localidad de la empresa a buscar" >
+            </div>
+            <div id="campo_provincia_empresa" class="form-group col-md-6" style="color:white">
+                <label>Provincia </label>
+                <input type="text" class="form-control" id="provincia_empresa" name="provincia_empresa" placeholder="Provincia de la empresa a buscar" >
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_cp_empresa" class="form-group col-md-6" style="color:white">
+                <label>Código Postal </label>
+                <input type="text" class="form-control" id="cp_empresa" name="cp_empresa" placeholder="Código postal de la empresa a buscar" >
+            </div>
+            <div id="campo_telefono_empresa" class="form-group col-md-6" style="color:white">
+                <label>Teléfono </label>
+                <input type="text" class="form-control" id="telefono_empresa" name="telefono_empresa" placeholder="Teléfono de la empresa a buscar" >
+            </div>
+        </div>
+    
+        <div class="form-row">
+            <div id="boton_buscar" class="form-group col-md-5">
+                <button type="button" class="btn btn-primary" onclick="buscar();" style="background-color:SlateBlue; border:SlateBlue;">Buscar</button>
+            </div>
+        </div>
+
+</div>
+</div>
+</div>
+
+{# Contenedor en el que se actualizan los resultados de la búsqueda #}
+<div id="empresasEncontradas">
+</div>
+
+<script>
+    function buscar(){
+        nombre_empresa = $("#nombre_empresa").val();
+        direccion_empresa = $("#direccion_empresa").val();
+        localidad_empresa = $("#localidad_empresa").val();
+        provincia_empresa = $("#provincia_empresa").val();
+        cp_empresa = $("#cp_empresa").val();
+        telefono_empresa = $("#telefono_empresa").val();
+        $("#empresasEncontradas").empty();
+        $.ajax
+        ({
+            type: "POST",
+            cache: true,
+            dataType: 'html',
+            url: "{{path('buscarEmpresaEmp')}}", 
+            data: {nombre_empresa: nombre_empresa, direccion_empresa: direccion_empresa, localidad_empresa: localidad_empresa, provincia_empresa: provincia_empresa, cp_empresa: cp_empresa, telefono_empresa: telefono_empresa},
+            success: function(html)
+            {
+                // Mostrar el resultado de la búsqueda
+                if(html !== ""){
+                    $("#empresasEncontradas").empty();
+                    $("#empresasEncontradas").html(html);
+                }
+            }
+        });
+    }
+</script>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

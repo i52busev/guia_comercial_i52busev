@@ -1,0 +1,71 @@
+{% extends 'administrador/index.html.twig' %}
+
+{% block title %}{{parent()}} - Buscar Oferta{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<div class="panel panel-default">
+    <div class="panel-heading"  style="background-color:DarkSlateBlue; border:DarkSlateBlue;">
+        <div class="container h-100 " style="margin-top:40px">
+        <h1 style="color:white"><center>Buscar una Oferta<center></h1>
+        <body onload="buscar();">
+        <div class="form-row">
+            <div id="campo_descripcion" class="form-group col-md-12" style="color:white">
+                <label>Descripción </label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción de la oferta a buscar" >
+            </div>
+            <div id="campo_fecha_inicio" class="form-group col-md-6" style="color:white">
+                <label>Fecha Inicio </label>
+                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" placeholder="Fecha de inicio de la oferta a buscar" >
+            </div>
+            <div id="campo_fecha_fin" class="form-group col-md-6" style="color:white">
+                <label>Fecha Fin </label>
+                <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" placeholder="Fecha de finalización de la oferta a buscar" >
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="boton_buscar" class="form-group col-md-5">
+                <button type="button" class="btn btn-primary" onclick="buscar();" style="background-color:SlateBlue; border:SlateBlue;">Buscar</button>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+{# Contenedor en el que se actualizan los resultados de la búsqueda #}
+<div id="ofertasEncontradas">
+</div>
+
+<script>
+    function buscar(){
+        fecha_inicio = $("#fecha_inicio").val();
+        fecha_fin = $("#fecha_fin").val();
+        descripcion = $("#descripcion").val();
+        $("#ofertasEncontradas").empty();
+        $.ajax
+        ({
+            type: "POST",
+            cache: true,
+            dataType: 'html',
+            url: "{{path('buscarOfertaAdmin')}}", 
+            data: {fecha_inicio: fecha_inicio, fecha_fin: fecha_fin, descripcion: descripcion},
+            success: function(html)
+            {
+                // Mostrar el resultado de la búsqueda
+                if(html !== ""){
+                    $("#ofertasEncontradas").empty();
+                    $("#ofertasEncontradas").html(html);
+                }
+            }
+        });
+    }
+</script>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'principal/index.html.twig' %}
+
+{% block title %}{{parent()}} - Ayuda{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<style>
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: SlateBlue;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: indigo;
+}
+</style>
+
+<div class="container h-100 " style="margin-top:40px">
+
+    <h1 style="color:black; margin-top:40px;"><center>Ayuda<center></h1>
+
+    <button onclick="topFunction()" id="myBtn" title="Volver arriba">Subir</button>
+
+    <ul>
+        <li><a href="#Inicio">Inicio</a></li>
+        <li><a href="#Buscar Comercio">Buscar Comercio</a></li>
+        <li><a href="#Registrarse">Registrarse</a></li>
+        <li><a href="#Iniciar Sesión">Iniciar Sesión</a></li>
+    </ul>
+
+    <h3 id="Inicio">Inicio</h3>
+
+    <p>Mediante la opción <strong>Inicio</strong> de la barra de navegación, se puede volver a la página principal desde cualquier
+    parte de la aplicación. Al hacer click se accede y se muestra el contenido de la página principal.</p>
+
+    <h3 id="Buscar Comercio">Buscar Comercio</h3>
+
+    <p>Mediante la opción <strong>Buscar comercio</strong> de la barra de navegación, se accede al buscador público de comercios.
+    Se pueden filtrar los resultados de la búsqueda por parámetros introduciendo uno o varios parámetros de búsqueda en los
+    correspondientes campos y pulsando el botón <strong>Buscar</strong> para confirmar los filtros introducidos.</p>
+    <p>Por defecto se mostrará la lista completa de comercios registrados en el sistema si no se realiza ninguna búsqueda
+    por parámetros.</p>
+    <p>Las opciones disponibles para los comercios resultantes de la búsqueda son las siguientes:</p>
+    <ul>
+        <li><strong>Consultar Comercio:</strong> Permite visualizar de manera detallada la información de un comercio registrado.
+        Esta opción permite posteriormente acceder a una lista con las ofertas del comercio seleccionado, desde la cual se podrá consultar
+        de forma detallada la información de cualquier oferta.</li>
+    </ul>
+    
+    <h3 id="Registrarse">Registrarse</h3>
+
+    <p>Mediante la opción <strong>Registrarse</strong> de la barra de navegación, se habilita un formulario para registrar
+    un nuevo usuario en el sistema intrduciendo los datos personales que figurarán posteriormente en el perfil de dicho usuario.
+    Es importante recordar que por defecto, el nuevo usuario registrado quedará pendiente de validación,
+    por lo que no podrá iniciar sesión con sus credenciales hasta que no se realice dicha validación por parte de un administrador.</p>
+    
+    <h3 id="Iniciar Sesión">Iniciar Sesión</h3>
+
+    <p>Mediante la opción <strong>Iniciar sesión</strong> de la barra de navegación, el usuario introduce sus credenciales para acceder a la parte
+    privada de la aplicación, con opciones restringidas exclusivamente a usuarios registrados en el sistema.</p>
+
+</div>
+
+<script>
+//Scrip para crear el botón de subir a la parte superior de la página
+var mybutton = document.getElementById("myBtn");
+
+// Se muestra el botón cuando el usuario baje de la parte superior de la página
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// Subir a la parte superior de la página al hacer click en el botón
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

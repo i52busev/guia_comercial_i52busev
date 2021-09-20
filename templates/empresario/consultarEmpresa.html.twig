@@ -1,0 +1,90 @@
+{% extends 'empresario/index.html.twig' %}
+
+{% block title %}{{parent()}} - Consultar Empresa{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<div id="informacionGeneral" class="row h-100-justify-content-center align-items-center " >
+    <h1 style="color:black; margin-top:80px;"><center>Datos de la Empresa<center></h1>
+    <div class="container h-100 " style="margin-top:30px; border: 10px ridge SlateBlue;">
+        <div class="col-6 bg-white rounded my-3 p-5">
+
+        <div class="form-row" style="margin-top:20px">
+            <div id="campo_cif" class="form-group col-md-6">
+                {{ form_label(formulario.cif)}}
+                {{ form_widget(formulario.cif, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_nombreEmpresa" class="form-group col-md-6">
+                {{ form_label(formulario.nombre_empresa)}}
+                {{ form_widget(formulario.nombre_empresa, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">    
+            <div id="campo_direccionEmpresa" class="form-group col-md-6">
+                {{ form_label(formulario.direccion_empresa)}}
+                {{ form_widget(formulario.direccion_empresa, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_localidadEmpresa" class="form-group col-md-6">
+                {{ form_label(formulario.localidad_empresa) }}
+                {{ form_widget(formulario.localidad_empresa, {'attr':{'disabled':'disabled'} })}}
+            </div>    
+        </div>
+
+        <div class="form-row">
+            <div id="campo_provinciaEmpresa" class="form-group col-md-6">
+                {{ form_label(formulario.provincia_empresa) }}
+                {{ form_widget(formulario.provincia_empresa, {'attr':{'disabled':'disabled'} })}}
+            </div>    
+        </div>
+
+        <div class="form-row">
+            <div id="campo_cp_empresa" class="form-group col-md-6">
+                {{ form_label(formulario.cp_empresa) }}
+                {{ form_widget(formulario.cp_empresa, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_telefonoEmpresa" class="form-group col-md-6">
+                {{ form_label(formulario.telefono_empresa) }}
+                {{ form_widget(formulario.telefono_empresa, {'attr':{'disabled':'disabled'} })}}
+            </div>    
+        </div>
+
+        <div class="form-row">
+            <div id="campo_webEmpresa" class="form-group col-md-6">
+                {{ form_label(formulario.web_empresa) }}
+                {{ form_widget(formulario.web_empresa, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_logotipo" class="form-group col-md-12">
+                <img src="{{logotipo}}" /> 
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="botones" class="form-group col-md-7">
+                <button type="button" class="btn btn-info" onclick="location.href='{{path('buscarComercioEmpresaEmp', {id: empresa.id})}}'">Comercios</button>
+                <button type="button" class="btn btn-default" onclick="history.back()">Volver</button>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

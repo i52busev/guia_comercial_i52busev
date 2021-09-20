@@ -1,0 +1,69 @@
+{% extends 'administrador/index.html.twig' %}
+
+{% block title %}{{parent()}} - Buscar Usuario{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+{% if usuarios is not same as("") and usuarios is not null and usuarios is not empty %}
+<div class="container h-100 " style="margin-top:40px">
+    <table id="tbUsuario" class="table table-hover table-sm" style="border: 10px ridge SlateBlue;">
+        <thead style="border-bottom-style:2px solid #24a690;">
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Teléfono</th>
+                <th>Fecha Alta</th>
+                <th>Validez</th>
+                <th style="width:20%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <div class="scrollit">
+                            {% for usuario in usuarios %}
+                                <tr id ='{{usuario.id}}'>
+                                    <td>{{usuario.id}}</td>
+                                    <td>{{usuario.email}}</td>
+                                    <td>{{usuario.nombre}}</td>
+                                    <td>{{usuario.apellidos}}</td>
+                                    <td>{{usuario.telefono}}</td>
+                                    <td>{{usuario.fechaAlta | date('d-m-Y  h:m:s')}}</td>
+                                    <td>{{usuario.validez}}</td>
+                                    <td style="width:19%" align="center">                                   
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('validarUsuario', {id: usuario.id})}}'"><img height="24px" src="{{ asset('images/checks.png') }}" title="Validar"/></button>
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('rechazarUsuario', {id: usuario.id})}}'"><img height="24px" src="{{ asset('images/delete2.png') }}" title="Rechazar"/></button>
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('consultarUsuario', {id: usuario.id})}}'"><img height="24px" src="{{ asset('images/about.png') }}" title="Consultar"/></button>
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('modificarUsuario', {id: usuario.id})}}'"><img height="24px" src="{{ asset('images/contract.png') }}" title="Modificar"/></button> 
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('eliminarUsuario', {id: usuario.id})}}'"><img height="24px" src="{{ asset('images/garbage.png') }}" title="Eliminar"/></button>
+                                    </td> 
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container h-100 " style="margin-top:40px">
+    <div class="form-row">
+        <div id="boton_volver" class="form-group col-md-6">
+            <button type="button" class="btn btn-default" onclick="history.back()">Volver</button>
+        </div>
+    </div>
+    </div>
+</div>
+{% else %}
+<div class="container h-100 " style="margin-top:40px">
+    <p style="text-align:center">No se ha encontrado ningun usuario que satisfaga los criterios seleccionados</p>
+    <button type="button" class="btn btn-default" onclick="history.back()">Volver</button>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

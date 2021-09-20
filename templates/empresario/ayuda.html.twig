@@ -1,0 +1,185 @@
+{% extends 'empresario/index.html.twig' %}
+
+{% block title %}{{parent()}} - Ayuda{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<style>
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: SlateBlue;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: indigo;
+}
+</style>
+
+<div class="container h-100 " style="margin-top:60px">
+
+    <h1 style="color:black; margin-top:40px;"><center>Ayuda<center></h1>
+
+    <button onclick="topFunction()" id="myBtn" title="Volver arriba">Subir</button>
+
+    <ul>
+        <li><a href="#Inicio">Inicio</a></li>
+        <li><a href="#Empresas">Empresas</a></li>
+        <li><a href="#Comercios">Comercios</a></li>
+        <li><a href="#Ofertas">Ofertas</a></li>
+        <li><a href="#Mi perfil">Mi perfil</a></li>
+        <li><a href="#Cerrar Sesión">Cerrar Sesión</a></li>
+    </ul>
+
+    <h3 id="Inicio">Inicio</h3>
+
+    <p>Mediante la opción <strong>Inicio</strong> de la barra de navegación, se puede volver a la página principal del usuario desde cualquier
+    parte de la aplicación. Al hacer click se accede y se muestra el contenido de la página principal.</p>
+
+    <h3 id="Empresas">Empresas</h3>
+
+    <p>Mediante la opción <strong>Empresas</strong> de la barra de navegación, se muestran las dos operaciones principales para interactuar
+    con las empresas registradas en el sistema.</p>
+
+        <h4 id="Mis Empresas">Mis Empresas</h4>
+
+        <p>Mediante la opción <strong>Mis Empresas</strong> del menú <strong>Empresas</strong>, se accede al buscador de empresas.
+        Se pueden filtrar los resultados de la búsqueda por parámetros introduciendo uno o varios parámetros de búsqueda en los
+        correspondientes campos y pulsando el botón <strong>Buscar</strong> para confirmar los filtros introducidos.</p>
+        <p>Por defecto se mostrará la lista completa de empresas pertenecientes al usuario registradas en el sistema 
+        si no se realiza ninguna búsqueda por parámetros.</p>
+        <p>Las opciones disponibles para las empresas resultantes de la búsqueda son las siguientes:</p>
+        <ul>
+            <li><strong>Consultar Empresa:</strong> Permite visualizar de manera detallada la información de una empresa registrada.
+            Esta opción permite posteriormente acceder a una lista con los comercios de la empresa seleccionada, desde la cual se podrá consultar
+            de forma detallada, modificar o eliminar la información de cualquier comercio.</li>
+            <li><strong>Modificar Empresa:</strong> Permite editar la información de una empresa registrada.</li>
+            <li><strong>Eliminar Empresa:</strong> Permite <strong>eliminar</strong> una empresa del sistema junto con <strong>toda la información vinculada</strong> a la misma.
+            Si se confirma la acción se eliminará por completo toda la información de la base de datos, incluyendo registros de
+            Comercios y Ofertas (si los hubiere).</li>
+        </ul>
+
+        <h4 id="Registrar empresa">Registrar empresa</h4>
+
+        <p>Mediante la opción <strong>Registrar empresa</strong> del menú <strong>Empresas</strong>, se habilita un formulario para registrar
+        una nueva empresa en el sistema. Es importante recordar que por defecto, la <strong>nueva empresa</strong> registrada quedará <strong>pendiente de validación</strong>.</p>
+
+    <h3 id="Comercios">Comercios</h3>
+
+    <p>Mediante la opción <strong>Comercios</strong> de la barra de navegación, se muestran las tres operaciones principales para interactuar
+    con los comercios registrados en el sistema.</p>
+
+        <h4 id="Mis Comercios">Mis Comercios</h4>
+
+        <p>Mediante la opción <strong>Mis Comercios</strong> del menú <strong>Comercios</strong>, se accede a la lista completa de comercios que pertenecen
+        a las diferentes empresas del usuario actual, los cuales se encuentran registrados en el sistema.</p>
+        <p>Las opciones disponibles para los comercios de dicha lista son las siguientes:</p>
+        <ul>
+            <li><strong>Consultar Comercio:</strong> Permite visualizar de manera detallada la información de un comercio registrado.
+            Esta opción permite posteriormente acceder a una lista con las ofertas del comercio seleccionado, desde la cual se podrá consultar
+            de forma detallada, modificar o eliminar la información de cualquier oferta.</li>
+            <li><strong>Modificar Comercio:</strong> Permite editar la información de un comercio registrado.</li>
+            <li><strong>Eliminar Comercio:</strong> Permite <strong>eliminar</strong> un comercio del sistema junto con <strong>toda la información vinculada</strong> al mismo.
+            Si se confirma la acción se eliminará por completo toda la información de la base de datos, incluyendo registros de Ofertas (si los hubiere).</li>
+        </ul>
+
+        <h4 id="Buscar comercio">Buscar comercio</h4>
+
+        <p>Mediante la opción <strong>Buscar comercio</strong> del menú <strong>Comercios</strong>, se accede al buscador público de comercios.
+        Se pueden filtrar los resultados de la búsqueda por parámetros introduciendo uno o varios parámetros de búsqueda en los
+        correspondientes campos y pulsando el botón <strong>Buscar</strong> para confirmar los filtros introducidos.</p>
+        <p>Por defecto se mostrará la lista completa de comercios registrados en el sistema si no se realiza ninguna búsqueda
+        por parámetros.</p>
+        <p>Las opciones disponibles para los comercios resultantes de la búsqueda son las siguientes:</p>
+        <ul>
+            <li><strong>Consultar Comercio:</strong> Permite visualizar de manera detallada la información de un comercio registrado.
+            Esta opción permite posteriormente acceder a una lista con las ofertas del comercio seleccionado, desde la cual se podrá consultar
+            de forma detallada la información de cualquier oferta.</li>
+        </ul>
+
+        <h4 id="Registrar comercio">Registrar comercio</h4>
+
+        <p>Mediante la opción <strong>Registrar comercio</strong> del menú <strong>Comercios</strong>, se habilita un formulario para registrar
+        un nuevo comercio en una de las empresas que que pertenezcan al usuario actual y que se encuentren registradas el sistema.
+        Es importante recordar que por defecto, el <strong>nuevo comercio</strong> registrado quedará <strong>pendiente de validación</strong>,
+        por lo que no aparecerá en las búsquedas públicas de comercios hasta que no se realice dicha validación.</p>
+
+    <h3 id="Ofertas">Ofertas</h3>
+
+    <p>Mediante la opción <strong>Ofertas</strong> de la barra de navegación, se muestran la operación principal para interactuar
+    con las ofertas registradas en el sistema.</p>
+
+        <h4 id="Registrar oferta">Registrar oferta</h4>
+
+        <p>Mediante la opción <strong>Registrar oferta</strong> del menú <strong>Ofertas</strong>, se habilita un formulario para registrar
+        una nueva oferta en uno de los comercios que pertenezcan a una de las empresas que pertenezcan al usuario actual y que se encuentren
+        registradas en el sistema. Es importante recordar que por defecto, la <strong>nueva oferta</strong> registrada quedará <strong>pendiente de validación</strong>,
+        por lo que no aparecerá en las búsquedas públicas de ofertas hasta que no se realice dicha validación.</p>
+    
+    <h3 id="Mi perfil">Mi perfil</h3>
+
+    <p>Mediante la opción <strong>Mi perfil</strong> de la barra de navegación, se muestran las tres operaciones principales para interactuar
+    con el perfil del usuario conectado actualmente a la aplicación.</p>  
+
+        <h4 id="Ver mi perfil">Ver mi perfil</h4>
+
+        <p>Mediante la opción <strong>Ver mi perfil</strong> del menú <strong>Mi perfil</strong>, se puede consultar la información personal
+        del perfil de usuario conectado actualmente a la aplicación.</p>
+
+        <h4 id="Editar mi perfil">Editar mi perfil</h4>
+
+        <p>Mediante la opción <strong>Editar mi perfil</strong> del menú <strong>Mi perfil</strong>, se puede modificar la información personal
+        del perfil de usuario conectado actualmente a la aplicación.</p>
+
+        <h4 id="Borrar mi perfil">Borrar mi perfil</h4>
+
+        <p>Mediante la opción <strong>Borrar mi perfil</strong> del menú <strong>Mi perfil</strong>, se puede eliminar la información personal
+        del perfil de usuario conectado actualmente a la aplicación. Si se confirma la acción, la sesión del usuario se cerrará y no podrá volver
+        a iniciar sesión en la aplicación.</p>
+    
+    <h3 id="Cerrar Sesión">Cerrar Sesión</h3>
+
+    <p>Mediante la opción <strong>Cerrar sesión</strong> de la barra de navegación, el usuario se desconecta de la aplicación, volviendo a la página principal
+    de la misma como un Usuario Público y restringiendo de nuevo el acceso a opciones reservadas para usuarios registrados.</p>
+
+</div>
+
+<script>
+//Scrip para crear el botón de subir a la parte superior de la página
+var mybutton = document.getElementById("myBtn");
+
+// Se muestra el botón cuando el usuario baje de la parte superior de la página
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// Subir a la parte superior de la página al hacer click en el botón
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

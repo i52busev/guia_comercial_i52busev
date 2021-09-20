@@ -1,0 +1,67 @@
+{% extends 'administrador/index.html.twig' %}
+
+{% block title %}{{parent()}} - Buscar Oferta{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+{% if ofertas is not same as("") and ofertas is not null and ofertas is not empty %}
+<div class="container h-100 " style="margin-top:40px">
+    <table id="tbOferta" class="table table-hover table-sm" style="border: 10px ridge SlateBlue;">
+        <thead style="border-bottom-style:2px solid #24a690;">
+            <tr>
+                <th>ID</th>
+                <th>CIF</th>
+                <th>Descripción</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Validez</th>
+                <th style="width:20%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <div class="scrollit">
+                            {% for oferta in ofertas %}
+                                <tr id ='{{oferta.id}}'>
+                                    <td>{{oferta.id}}</td>
+                                    <td>{{oferta.cif}}</td>
+                                    <td>{{oferta.descripcion}}</td>
+                                    <td>{{oferta.fechaInicio | date('d-m-Y  h:m:s')}}</td>
+                                    <td>{{oferta.fechaFin | date('d-m-Y  h:m:s')}}</td>
+                                    <td>{{oferta.validez}}</td>
+                                    <td style="width:19%" align="center">                                   
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('validarOferta', {id: oferta.id})}}'"><img height="24px" src="{{ asset('images/checks.png') }}" title="Validar"/></button>
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('rechazarOferta', {id: oferta.id})}}'"><img height="24px" src="{{ asset('images/delete2.png') }}" title="Rechazar"/></button>
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('consultarOfertaAdmin', {id: oferta.id})}}'"><img height="24px" src="{{ asset('images/about.png') }}" title="Consultar"/></button>
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('modificarOfertaAdmin', {id: oferta.id})}}'"><img height="24px" src="{{ asset('images/contract.png') }}" title="Modificar"/></button> 
+                                        <button type="button" class="btn btn-link" onclick="location.href='{{ path('eliminarOfertaAdmin', {id: oferta.id})}}'"><img height="24px" src="{{ asset('images/garbage.png') }}" title="Eliminar"/></button>
+                                    </td> 
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container h-100 " style="margin-top:40px">
+    <div class="form-row">
+        <div id="boton_volver" class="form-group col-md-6">
+            <button type="button" class="btn btn-default" onclick="history.back()">Volver</button>
+        </div>
+    </div>
+    </div>
+</div>
+{% else %}
+<div class="container h-100 " style="margin-top:40px">
+    <p style="text-align:center">No se ha encontrado ninguna oferta que satisfaga los criterios seleccionados</p>
+    <button type="button" class="btn btn-default" onclick="history.back()">Volver</button>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

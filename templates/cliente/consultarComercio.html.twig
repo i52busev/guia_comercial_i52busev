@@ -1,0 +1,72 @@
+{% extends 'cliente/index.html.twig' %}
+
+{% block title %}{{parent()}} - Consultar Comercio{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<div id="informacionGeneral" class="row h-100-justify-content-center align-items-center " >
+    <h1 style="color:black; margin-top:80px;"><center>Datos del Comercio<center></h1>
+    <div class="container h-100 " style="margin-top:30px; border: 10px ridge SlateBlue;">
+        <div class="col-6 bg-white rounded my-3 p-5">
+
+        <div class="form-row" style="margin-top:20px">
+            <div id="campo_id_empresa" class="form-group col-md-6">
+                {{ form_label(formulario.id_empresa)}}
+                {{ form_widget(formulario.id_empresa, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_nombreComercio" class="form-group col-md-6">
+                {{ form_label(formulario.nombre_comercio)}}
+                {{ form_widget(formulario.nombre_comercio, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">    
+            <div id="campo_direccionComercio" class="form-group col-md-6">
+                {{ form_label(formulario.direccion_comercio)}}
+                {{ form_widget(formulario.direccion_comercio, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_codigoPostal" class="form-group col-md-6">
+                {{ form_label(formulario.codigo_postal) }}
+                {{ form_widget(formulario.codigo_postal, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="campo_telefonoComercio" class="form-group col-md-6">
+                {{ form_label(formulario.telefono_comercio) }}
+                {{ form_widget(formulario.telefono_comercio, {'attr':{'disabled':'disabled'} })}}
+            </div>    
+        </div>
+
+        <div class="form-row">
+            <div id="campo_webComercio" class="form-group col-md-6">
+                {{ form_label(formulario.web_comercio) }}
+                {{ form_widget(formulario.web_comercio, {'attr':{'disabled':'disabled'} })}}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="botones" class="form-group col-md-6">
+                <button type="button" class="btn btn-info" onclick="location.href='{{path('buscarOfertaCli', {id: comercio.id})}}'">Ofertas</button>
+                <button type="button" class="btn btn-warning" onclick="location.href='{{path('clienteNotificacionesActivar', {id: comercio.id})}}'">Activar Notificaciones</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='{{path('clienteNotificacionesDesactivar', {id: comercio.id})}}'">Desactivar Notificaciones</button>
+                <button type="button" class="btn btn-default" onclick="history.back()">Volver</button>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'cliente/index.html.twig' %}
+
+{% block title %}{{parent()}} - Ayuda{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+<style>
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: SlateBlue;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: indigo;
+}
+</style>
+
+<div class="container h-100 " style="margin-top:40px">
+
+    <h1 style="color:black; margin-top:40px;"><center>Ayuda<center></h1>
+
+    <button onclick="topFunction()" id="myBtn" title="Volver arriba">Subir</button>
+
+    <ul>
+        <li><a href="#Inicio">Inicio</a></li>
+        <li><a href="#Buscar Comercio">Buscar Comercio</a></li>
+        <li><a href="#Mis Ofertas">Mis Ofertas</a></li>
+        <li><a href="#Notificaciones">Notificaciones</a></li>
+        <li><a href="#Mi perfil">Mi perfil</a></li>
+        <li><a href="#Cerrar Sesión">Cerrar Sesión</a></li>
+    </ul>
+
+    <h3 id="Inicio">Inicio</h3>
+
+    <p>Mediante la opción <strong>Inicio</strong> de la barra de navegación, se puede volver a la página principal del usuario desde cualquier
+    parte de la aplicación. Al hacer click se accede y se muestra el contenido de la página principal.</p>
+
+    <h3 id="Buscar Comercio">Buscar Comercio</h3>
+
+    <p>Mediante la opción <strong>Buscar comercio</strong> de la barra de navegación, se accede al buscador público de comercios.
+    Se pueden filtrar los resultados de la búsqueda por parámetros introduciendo uno o varios parámetros de búsqueda en los
+    correspondientes campos y pulsando el botón <strong>Buscar</strong> para confirmar los filtros introducidos.</p>
+    <p>Por defecto se mostrará la lista completa de comercios registrados en el sistema si no se realiza ninguna búsqueda
+    por parámetros.</p>
+    <p>Las opciones disponibles para los comercios resultantes de la búsqueda son las siguientes:</p>
+    <ul>
+        <li><strong>Consultar Comercio:</strong> Permite visualizar de manera detallada la información de un comercio registrado.
+        Esta opción permite posteriormente activar o desactivar la recepción de notificaciones de ofertas y acceder a una lista
+        con las ofertas del comercio seleccionado, desde la cual se podrá consultar
+        de forma detallada la información de cualquier oferta.</li>
+    </ul>
+
+    <h3 id="Mis Ofertas">Mis Ofertas</h3>
+
+    <p>Mediante la opción <strong>Mis Ofertas</strong> de la barra de navegación, se accede a la lista de ofertas que pertenecen a
+    comercios en los que el cliente tiene activada la recepción de notificaciones.</p>
+    <p>Las opciones disponibles para las ofertas que aparecen en la lista son las siguientes:</p>
+    <ul>
+        <li><strong>Consultar Oferta:</strong> Permite visualizar de manera detallada la información de una oferta registrada.</li>
+    </ul>
+    
+    <h3 id="Notificaciones">Notificaciones</h3>
+
+    <p>Mediante la opción <strong>Notificaciones</strong> de la barra de navegación, se muestran la operación principal para interactuar
+    con las solicitudes de recepción de notificaciones registradas en el sistema.</p>
+
+        <h4 id="Notificaciones activas">Notificaciones activas</h4>
+
+        <p>Mediante la opción <strong>Notificaciones activas</strong> del menú <strong>Notificaciones</strong>, se accede a la lista de
+        comercios en los que el usuario tiene activada la recepción de notificaciones.</p>
+        <p>Las opciones disponibles para los comercios que aparecen en la lista son las siguientes:</p>
+        <ul>
+            <li><strong>Consultar Comercio:</strong> Permite visualizar de manera detallada la información de un comercio registrado.
+            Esta opción permite posteriormente activar o desactivar la recepción de notificaciones de ofertas y acceder a una lista
+            con las ofertas del comercio seleccionado, desde la cual se podrá consultar
+            de forma detallada la información de cualquier oferta.</li>
+        </ul>
+    
+    <h3 id="Mi perfil">Mi perfil</h3>
+
+    <p>Mediante la opción <strong>Mi perfil</strong> de la barra de navegación, se muestran las tres operaciones principales para interactuar
+    con el perfil del usuario conectado actualmente a la aplicación.</p>
+
+        <h4 id="Ver mi perfil">Ver mi perfil</h4>
+
+        <p>Mediante la opción <strong>Ver mi perfil</strong> del menú <strong>Mi perfil</strong>, se puede consultar la información personal
+        del perfil de usuario conectado actualmente a la aplicación.</p>
+
+        <h4 id="Editar mi perfil">Editar mi perfil</h4>
+
+        <p>Mediante la opción <strong>Editar mi perfil</strong> del menú <strong>Mi perfil</strong>, se puede modificar la información personal
+        del perfil de usuario conectado actualmente a la aplicación.</p>
+
+        <h4 id="Borrar mi perfil">Borrar mi perfil</h4>
+
+        <p>Mediante la opción <strong>Borrar mi perfil</strong> del menú <strong>Mi perfil</strong>, se puede eliminar la información personal
+        del perfil de usuario conectado actualmente a la aplicación. Si se confirma la acción, la sesión del usuario se cerrará y no podrá volver
+        a iniciar sesión en la aplicación.</p>
+    
+    <h3 id="Cerrar Sesión">Cerrar Sesión</h3>
+
+    <p>Mediante la opción <strong>Cerrar sesión</strong> de la barra de navegación, el usuario se desconecta de la aplicación, volviendo a la página principal
+    de la misma como un Usuario Público y restringiendo de nuevo el acceso a opciones reservadas para usuarios registrados.</p>
+
+</div>
+
+<script>
+//Scrip para crear el botón de subir a la parte superior de la página
+var mybutton = document.getElementById("myBtn");
+
+// Se muestra el botón cuando el usuario baje de la parte superior de la página
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// Subir a la parte superior de la página al hacer click en el botón
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

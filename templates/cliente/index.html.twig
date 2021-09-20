@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} - Cliente{% endblock %}
+
+{% block body %}
+
+    {# Barra de navegación #}
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid" style="background-color:SlateBlue";>
+            <div class="navbar-header">
+                <a style="color:white"; class="navbar-brand" href="#">Guía Comercial</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="option"><a style="color:white"; href="{{path('cliente')}}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+                <li class="option"><a style="color:white"; style="color:white"; href="{{path('comercioBuscarCli')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Buscar Comercio</a></li>
+                <li class="option"><a style="color:white"; href="{{path('clienteOfertas')}}"><span class="glyphicon glyphicon-tag"></span> Mis Ofertas</a></li>
+                <li class="dropdown"><a id="dropdown-item" style="color:white"; class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-bell"></span> Notificaciones <span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="background-color:SlateBlue";>
+                        <li><a id="dropdown-item" style="color:white"; href="{{path('clienteNotificaciones')}}">Notificaciones activadas</a></li>
+                    </ul>
+                </li>
+                <li class="option"><a style="color:white"; href="{{path('ayudaCliente')}}"><span class="glyphicon glyphicon-question-sign"></span> Ayuda</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown"><a id="dropdown-item" style="color:white"; class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Mi perfil</a>
+                    <ul class="dropdown-menu" style="background-color:SlateBlue";>
+                        <li><a id="dropdown-item" style="color:white"; href="{{path('verPerfilCli')}}">Ver mi perfil</a></li>
+                        <li><a id="dropdown-item" style="color:white"; href="{{path('editarPerfilCli')}}">Editar mi perfil</a></li>
+                        <li><a id="dropdown-item" style="color:white"; href="{{path('borrarPerfilCli')}}">Borrar mi perfil</a></li>
+                    </ul>
+                </li>
+                <li class="option"><a style="color:white"; href="{{path('app_logout')}}"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .option { background-color:SlateBlue; color: white; }
+    .option:hover { background-color: indigo; }
+    .dropdown { background-color:SlateBlue; color: white; }
+    .dropdown:hover { background-color: indigo; }
+    .dropdown-menu { background-color:SlateBlue; color: white; }
+    .dropdown-menu:hover { background-color: indigo; }
+    #dropdown-item { background-color:SlateBlue; color: white; display: block; }
+    #dropdown-item:hover { background-color: indigo; }
+    #dropdown-item:focus { background-color: indigo; }
+    body {background-color: FloralWhite; }
+</style>
+
+{% endblock %}
+
+{% block content %}
+    <h1 style="color:black; margin-top:80px;"><center>Bienvenido a la Guía Comercial de Baena y su comarca.<center></h1>
+    <center><img style="margin-top:80px;" src="{{ asset('images/baena.jpg') }}" /></center>
+{% endblock %}

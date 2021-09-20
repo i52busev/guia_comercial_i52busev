@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="shortcut icon" href="#">
+         
+        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+        <title>{% block title %}Guía Comercial{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+            {# <script src="{{ asset('js/script.js') }}"></script> #}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        {# Barra de navegación #}
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid" style="background-color:SlateBlue;">
+                <div class="navbar-header">
+                    <a style="color:white"; class="navbar-brand" href="#">Guía Comercial</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="option"><a style="color:white"; href="{{path('principal')}}"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+                    <li class="option"><a style="color:white"; href="{{path('comercioBuscarPublico')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Buscar Comercio</a></li>
+                    <li class="option"><a style="color:white"; href="{{path('ayudaPublico')}}"><span class="glyphicon glyphicon-question-sign"></span> Ayuda</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="option"><a style="color:white"; href="{{path('registro')}}"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
+                    <li class="option"><a style="color:white"; href="{{path('app_login')}}"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
+                </ul>
+            </div>
+        </nav>
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .option { background-color:SlateBlue; color: white; }
+        .option:hover { background-color: indigo; }
+        .dropdown { background-color:SlateBlue; color: white; }
+        .dropdown:hover { background-color: indigo; }
+        .dropdown-menu { background-color:SlateBlue; color: white; }
+        .dropdown-menu:hover { background-color: indigo; }
+        #dropdown-item { background-color:SlateBlue; color: white; display: block; }
+        #dropdown-item:hover { background-color: indigo; }
+        #dropdown-item:focus { background-color: indigo; }
+        body {background-color: FloralWhite; }
+    </style>
+        {% endblock %}
+
+        
+    </body>
+        {% block content %}
+            <h1 style="color:black; margin-top:80px;"><center>Bienvenido a la Guía Comercial de Baena y su comarca.<center></h1>
+            <center><img style="margin-top:80px;" src="{{ asset('images/baena.jpg') }}" /></center>
+        {% endblock %}
+</html>
